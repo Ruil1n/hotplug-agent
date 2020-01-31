@@ -37,7 +37,10 @@ public class Agent {
             // 如果终止时需要卸载
             if (args.startsWith(CLOSE_COMMAND)){
                 if (injectTransformer!=null) {
-                    instrumentations.forEach(t -> t.removeTransformer(injectTransformer));
+                    //instrumentations.forEach(t -> t.removeTransformer(injectTransformer));
+                    for (Instrumentation i:instrumentations) {
+                        i.removeTransformer(injectTransformer);
+                    }
                     injectTransformer=null;
                     System.err.println("remove InjectTransformer");
                 }
@@ -60,7 +63,10 @@ public class Agent {
                     System.out.println("Class matched " + clazz.getName());
                     instr.retransformClasses(clazz);
                     if (restoreTransformer!=null) {
-                        instrumentations.forEach(t -> t.removeTransformer(restoreTransformer));
+                        //instrumentations.forEach(t -> t.removeTransformer(restoreTransformer));
+                        for (Instrumentation i:instrumentations) {
+                            i.removeTransformer(restoreTransformer);
+                        }
                         restoreTransformer=null;
                         System.err.println("remove RestoreTransformer");
                     }
