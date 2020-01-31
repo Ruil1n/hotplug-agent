@@ -36,7 +36,7 @@
   ![](./images/remove.jpg)
   通过jvisualvm查看堆状态
   ![](./images/unload.jpg)
-  热卸载成功
+  热卸载成功 织入代码删除 恢复项目原运行状态
   
   ---
 ### 参考
